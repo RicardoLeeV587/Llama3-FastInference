@@ -74,9 +74,9 @@ async def main(args):
     print("[INFO] Connection Success!")
 
     resultList = []
-    tasks_get_result = [rate_limited_generate_response(item, sem) for item in sampleList[:1000]]
+    tasks_get_result = [rate_limited_generate_response(item, sem) for item in sampleList]
     
-    for index, example in enumerate(tqdm(asyncio.as_completed(tasks_get_result), total=len(sampleList[:1000]))):
+    for index, example in enumerate(tqdm(asyncio.as_completed(tasks_get_result), total=len(sampleList))):
         resultList.append(await example)
         if index % 512 == 511:
             print(f"======={index}=======")
