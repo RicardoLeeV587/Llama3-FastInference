@@ -35,7 +35,7 @@ client = AsyncOpenAI(
 
 async def generate_response(example: dict) -> dict:
     completion = await client.chat.completions.create(
-        model="/root/autodl-tmp/llama3_lora_sft_WASSA_EXP304",
+        model=args.base_model,
         messages=[
         {"role": "system", "content": "You are a helpful assistant."},
         {"role": "user", "content": example["instruction"]}
